@@ -27,3 +27,9 @@ jobs:
 
       - name: Exécuter le script
         run: python m.py
+
+      - name: Sauvegarder les fichiers générés
+        uses: actions/upload-artifact@v3
+        with:
+          name: wind_data
+          path: wind_data_3.xlsx  # Le fichier Excel généré
