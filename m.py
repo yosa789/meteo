@@ -8,10 +8,11 @@ import time
 import pandas as pd
 import re  # Pour utiliser les expressions régulières
 
-# Configuration du navigateur (non-headless pour voir ce qu'il fait)
 options = webdriver.ChromeOptions()
-options.add_argument("--start-maximized")  # Lancer en pleine taille
-
+options.add_argument("--start-maximized")
+options.add_argument("--no-sandbox")  # Ajoute cette ligne
+options.add_argument("--disable-dev-shm-usage")  # Ajoute cette ligne
+options.add_argument("--headless")  # Ex
 driver = webdriver.Chrome(
     service=Service(ChromeDriverManager().install()),
     options=options
