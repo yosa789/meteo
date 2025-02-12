@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: '50 23 * * *'  # 🔥 Exécute tous les jours à 00h50 heure française (23h50 UTC)
 
 jobs:
   test:
@@ -32,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v4  # 🔥 Mise à jour vers v4
         with:
           name: wind_data
-          path: wind_data_3.xlsx  # Le fichier Excel généré
+          path: wind_data_3.xlsx  # Fichier Excel généré
