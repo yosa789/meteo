@@ -1,14 +1,14 @@
 name: Test Meteo Script
 
 on:
+  schedule:
+    - cron: '50 23 * * *'  # Exécution à 00h50 heure française (23h50 UTC)
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
-  schedule:
-    - cron: '50 23 * * *'  # 🔥 Exécute tous les jours à 00h50 heure française (23h50 UTC)
 
 jobs:
   test:
@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Récupérer le code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Installer Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
@@ -31,7 +31,7 @@ jobs:
         run: python m.py
 
       - name: Sauvegarder les fichiers générés
-        uses: actions/upload-artifact@v4  # 🔥 Mise à jour vers v4
+        uses: actions/upload-artifact@v4
         with:
           name: wind_data
-          path: wind_data_3.xlsx  # Fichier Excel généré
+          path: wind_data_3.xlsx
