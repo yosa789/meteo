@@ -2,7 +2,7 @@ name: Test Meteo Script
 
 on:
   schedule:
-    - cron: "50 14 * * *" r)
+    - cron: "50 14 * * *"
 
   push:
     branches:
