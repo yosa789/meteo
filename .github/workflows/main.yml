@@ -2,14 +2,7 @@ name: Test Meteo Script
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # Exécute toutes les 5 minutes pour tester
-
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    - cron: "30 14 * * *"  # Exécute une seule fois par jour à 14h30 UTC
 
 jobs:
   test:
