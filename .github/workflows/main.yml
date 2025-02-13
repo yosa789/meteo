@@ -2,7 +2,8 @@ name: Test Meteo Script
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Exécution à 00h00 UTC (soit 01h00 heure française)
+    - cron: "*/5 * * * *"  # Exécute toutes les 5 minutes pour tester
+
   push:
     branches:
       - main
