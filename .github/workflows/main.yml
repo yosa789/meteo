@@ -2,7 +2,7 @@ name: Test Meteo Script
 
 on:
   schedule:
-    - cron: "30 14 * * *"  # Exécute une seule fois à 14h30
+cron: "50 14 * * *"  # 14h50 UTC = 15h50 heure française (hiver)
 
   push:
     branches:
