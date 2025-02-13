@@ -2,7 +2,7 @@ name: Test Meteo Script
 
 on:
   schedule:
-cron: "50 14 * * *"  # 14h50 UTC = 15h50 heure française (hiver)
+    - cron: "50 14 * * *" r)
 
   push:
     branches:
@@ -10,6 +10,7 @@ cron: "50 14 * * *"  # 14h50 UTC = 15h50 heure française (hiver)
   pull_request:
     branches:
       - main
+
 
 jobs:
   test:
