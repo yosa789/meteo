@@ -33,7 +33,7 @@ jobs:
 
       - name: Envoyer notification Telegram
         run: |
-         curl -X GET "https://api.telegram.org/bot7662159595:AAEjxZ...Ls3oM/sendMessage?chat_id=123456789&text=✅+Le+script+meteo+a+bien+fonctionné+!"
+         curl -X GET "https://api.telegram.org/bot7662159595:AAEjxZWdxbWgztAhRmmFgAmPX_tTRoLs3oM/sendMessage?chat_id=1607467745&text=✅+Le+script+meteo+a+bien+fonctionné+!"
 
 
       - name: Sauvegarder les fichiers générés
