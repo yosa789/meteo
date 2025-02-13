@@ -2,7 +2,14 @@ name: Test Meteo Script
 
 on:
   schedule:
-    - cron: "30 14 * * *"  # Exécute une seule fois par jour à 14h30 UTC
+    - cron: "30 14 * * *"  # Exécute une seule fois à 14h30
+
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
@@ -23,6 +30,10 @@ jobs:
 
       - name: Exécuter le script
         run: python m.py
+
+      - name: Envoyer notification Telegram
+        run: |
+          curl -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=✅+Le+script+meteo+a+bien+fonctionné+!"
 
       - name: Sauvegarder les fichiers générés
         uses: actions/upload-artifact@v4
