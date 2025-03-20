@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wind_data
-          path: name: Test Meteo Script
+          path: name: wind_data_today.xlsx
 
 on:
   schedule:
