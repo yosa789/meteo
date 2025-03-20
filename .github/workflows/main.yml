@@ -40,9 +40,8 @@ jobs:
       - name: Sauvegarder les fichiers générés
         uses: actions/upload-artifact@v4
         with:
-          name: wind_data
-          path: name: wind_data_today.xlsx
-
+              name: wind_data
+              path: wind_data_today.xlsx
 
          
 
