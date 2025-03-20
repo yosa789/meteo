@@ -41,4 +41,47 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wind_data
-          path: wind_data_3.xlsx
+          path: name: Test Meteo Script
+
+on:
+  schedule:
+    - cron: "50 14 * * *"
+
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Installer les dépendances
+        run: |
+          pip install selenium webdriver-manager pandas openpyxl
+
+      - name: Exécuter le script
+        run: python m.py
+
+      - name: Envoyer notification Telegram
+        run: |
+         curl -X GET "https://api.telegram.org/bot7662159595:AAEjxZWdxbWgztAhRmmFgAmPX_tTRoLs3oM/sendMessage?chat_id=1607467745&text=✅+Le+script+meteo+a+bien+fonctionné+!"
+
+
+      - name: Sauvegarder les fichiers générés
+        uses: actions/upload-artifact@v4
+        with:
+          name: wind_data
+          path: wind_data_today.xlsx
