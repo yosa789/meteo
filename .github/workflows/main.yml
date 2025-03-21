@@ -2,15 +2,13 @@ name: Test Meteo Script
 
 on:
   schedule:
-    - cron: "50 14 * * *"
-
+    - cron: "50 14 * * *"  # Exécution quotidienne à 14:50 UTC
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
-
 
 jobs:
   test:
@@ -30,18 +28,20 @@ jobs:
           pip install selenium webdriver-manager pandas openpyxl
 
       - name: Exécuter le script
-        run: python m.py
+        run: python m.py  # Assurez-vous que ce script génère wind_data_today.xlsx
 
-      - name: Envoyer notification Telegram
+      - name: Envoyer le fichier Excel via Telegram
         run: |
-         curl -X GET "https://api.telegram.org/bot7662159595:AAEjxZWdxbWgztAhRmmFgAmPX_tTRoLs3oM/sendMessage?chat_id=1607467745&text=✅+Le+script+meteo+a+bien+fonctionné+!"
-
+          # Envoyer le fichier Excel via l'API Telegram
+          curl -F document=@"wind_data_today.xlsx" \
+               -F caption="✅ Les données météo ont été extraites avec succès. Voici le fichier Excel." \
+               "https://api.telegram.org/bot7662159595:AAEjxZWdxbWgztAhRmmFgAmPX_tTRoLs3oM/sendDocument?chat_id=1607467745"
 
       - name: Sauvegarder les fichiers générés
         uses: actions/upload-artifact@v4
         with:
-              name: wind_data
-              path: wind_data_today.xlsx
+          name: wind_data
+          path: wind_data_today.xlsx
 
          
 
